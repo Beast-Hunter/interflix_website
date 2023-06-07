@@ -30,4 +30,4 @@ Api's are working fine but Database is facing some issues. Hence, not fully func
 - [Radhika_Aggarwal](Front End)
 - [Guramrit_Singh](Back End Api's)
 - [Antriksh_Jain](Back End)
-- [Anahit_Sandhu]( Ui/UX )
+- [Anahit_Sandhu]( Ui / UX )
