@@ -5,13 +5,6 @@ const verify = require("../verifyToken");
 
 router.put("/:id", verify, async (req, res) => {
   if (req.user.id === req.params.id || req.user.isAdmin) {
-    if (req.body.password) {
-      req.body.password = CryptoJS.AES.encrypt(
-        req.body.password,
-        "amrit"
-      ).toString();
-    }
-
     try {
       const updatedUser = await User.findByIdAndUpdate(
         req.params.id,
@@ -42,6 +35,17 @@ router.delete("/:id", verify, async (req, res) => {
     res.status(403).json("You can delete only your account!");
   }
 });
+
+router.get("/find/:id", async (req, res) => {
+  try {
+    const user = await User.findById(req.params.id);
+    const { password, ...info } = user._doc;
+    res.status(200).json(info);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 
 
 module.exports = router;
